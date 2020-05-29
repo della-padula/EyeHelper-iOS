@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>133484520579-4jnu7lfeviusnpf06ebl3mfko569ebqm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.133484520579-4jnu7lfeviusnpf06ebl3mfko569ebqm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAXxn6IwoO1eyQ5gu9xpjh_uJvG07j7GvY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>133484520579</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.denny.EyeHelper</string>
+	<key>PROJECT_ID</key>
+	<string>eyehelper-ios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>eyehelper-ios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:133484520579:ios:6fc8737db4c8a13390a7b6</string>
+	<key>DATABASE_URL</key>
+	<string>https://eyehelper-ios.firebaseio.com</string>
+</dict>
+</plist>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CoreData
 
 @UIApplicationMain
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
@@ -24,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
+         creates and returns a container, having loade  the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
