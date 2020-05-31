@@ -94,7 +94,13 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             }
             
             // Recognized text
-            print("🗣 RESULT : \(result)")
+            print("🗣 RESULT : \(result.text)")
+            for block in result.blocks {
+                print("🗣 RESULT-BLOCK : \(block.text)")
+                for line in block.lines {
+                    print("🗣 RESULT-LINE : \(line.text)")
+                }
+            }
         }
     }
     
