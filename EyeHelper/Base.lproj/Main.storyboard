@@ -19,6 +19,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWm-lD-74e">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMQ-E8-MAX" userLabel="ResultTextView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcR-Fc-sbO">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="XcR-Fc-sbO" firstAttribute="top" secondItem="cMQ-E8-MAX" secondAttribute="top" id="9Ic-j8-7jf"/>
+                                    <constraint firstAttribute="bottom" secondItem="XcR-Fc-sbO" secondAttribute="bottom" id="T3Q-1X-543"/>
+                                    <constraint firstAttribute="trailing" secondItem="XcR-Fc-sbO" secondAttribute="trailing" id="X7b-4v-xKx"/>
+                                    <constraint firstItem="XcR-Fc-sbO" firstAttribute="leading" secondItem="cMQ-E8-MAX" secondAttribute="leading" id="ltU-0B-8wk"/>
+                                </constraints>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTm-Og-9to">
                                 <rect key="frame" x="266" y="714" width="128" height="128"/>
                                 <constraints>
@@ -29,11 +48,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="cMQ-E8-MAX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AnM-Jj-BgW"/>
                             <constraint firstItem="wWm-lD-74e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JFj-dF-4K0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HTm-Og-9to" secondAttribute="trailing" constant="20" id="OjY-HN-0W0"/>
                             <constraint firstAttribute="trailing" secondItem="wWm-lD-74e" secondAttribute="trailing" id="Vie-2I-OPv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HTm-Og-9to" secondAttribute="bottom" constant="20" id="W3s-4U-wtT"/>
                             <constraint firstItem="wWm-lD-74e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZIA-3h-A2x"/>
+                            <constraint firstItem="cMQ-E8-MAX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fxk-Pc-RhD"/>
+                            <constraint firstItem="cMQ-E8-MAX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kIP-kK-ww2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cMQ-E8-MAX" secondAttribute="bottom" id="ot5-cI-Rhe"/>
                             <constraint firstAttribute="bottom" secondItem="wWm-lD-74e" secondAttribute="bottom" id="znN-t4-Z5D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -43,6 +66,7 @@
                         <outlet property="constraintImageHeight" destination="kAy-gI-Ucb" id="nWx-Gt-TsS"/>
                         <outlet property="constraintImageWidth" destination="tQ4-mP-aOo" id="Bjl-za-pSg"/>
                         <outlet property="imageView" destination="HTm-Og-9to" id="iZi-cH-EKs"/>
+                        <outlet property="resultLabel" destination="XcR-Fc-sbO" id="Xda-rY-27P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

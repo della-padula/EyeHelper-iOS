@@ -15,6 +15,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var resultLabel: UILabel!
+    
     @IBOutlet weak var constraintImageHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintImageWidth: NSLayoutConstraint!
     
@@ -80,8 +82,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @objc
     private func timerCallback() {
         if let image = viewControllerUIImage {
-            self.imageView.image = image
-            self.requestFirebaseTextDetection(image: image)
+            self.imageView.image = image.fixOrientation()
+            self.requestFirebaseTextDetection(image: image.fixOrientation())
         }
     }
     
@@ -90,17 +92,25 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         self.textRecognizer?.process(visionImage) { result, error in
             guard error == nil, let result = result else {
                 print("error error error")
+                self.resultLabel.text = "Error Occurred"
                 return
             }
             
             // Recognized text
-            print("🗣 RESULT : \(result.text)")
+            var resultString = "[RESULT]\n"
+            resultString += "result.text : \(result.text)\n"
+            print("🗣 RESULT : \(result.text)\n----")
             for block in result.blocks {
                 print("🗣 RESULT-BLOCK : \(block.text)")
+//                resultString += "block.text : \(block.text)\n"
                 for line in block.lines {
                     print("🗣 RESULT-LINE : \(line.text)")
+                    resultString += "line.text : \(line.text)\n"
                 }
+//                resultString += "--------\n"
             }
+            
+            self.resultLabel.text = resultString
         }
     }
     
