@@ -38,6 +38,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generator.prepare()
         
         let vision = Vision.vision()
         textRecognizer = vision.onDeviceTextRecognizer()
@@ -52,7 +53,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func playMorseCode() {
-        MorsePlayer.vibrate(morseText: "HELLO")
+        MorsePlayer.shared.vibrate(morseText: "HELLO")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

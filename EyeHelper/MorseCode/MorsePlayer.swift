@@ -11,13 +11,17 @@ import UIKit
 import AudioToolbox
 import AVFoundation
 
+public var generator = UIImpactFeedbackGenerator(style: .medium)
+
 public class MorsePlayer {
     
-    private static let shortDuration = 0.1
-    private static let longDuration = 0.3
-    private static let breakDuration = 0.6
+    public static let shared = MorsePlayer()
     
-    class func vibrate(morseText: String) {
+    private let breakDuration = 0.3
+    
+    private init() { }
+    
+    public func vibrate(morseText: String) {
         // isVibrate : isLong
         var dict: [(Bool, Bool)] = [(Bool, Bool)]()
         
@@ -45,28 +49,49 @@ public class MorsePlayer {
         }
         
         DispatchQueue.main.async {
-            AudioServicesPlaySystemSound(4095)
+            self.vibrateAction(dict: dict)
         }
     }
     
-    private class func vibrateAction(dict: [(Bool, Bool)]) {
+    public func vibrateAction(dict: [(Bool, Bool)]) {
         var isVibrate = false
         var isLong = false
-        var totalTime = 0.0
-        
-        var vibrateDuration = 0.0
         
         for item in dict {
             isVibrate = item.0
             isLong = item.1
-            vibrateDuration = isLong ? longDuration : shortDuration
             
-            totalTime += breakDuration
-            totalTime += vibrateDuration
+            sleep(1)
+            // 1 second * breakDuration
+            // usleep(UInt32(1000000 * breakDuration))
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + totalTime, execute: {
-                
-            })
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            
+            if isVibrate {
+                if isLong {
+                    print("Long Vibrate!!!")
+//                    generator.impactOccurred()
+//                    let generator = UINotificationFeedbackGenerator()
+//                    generator.notificationOccurred(.success)
+
+//                    usleep(UInt32(1000000 * 0.1))
+//                    generator.impactOccurred()
+//                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+//
+//                    let second: Double = 1000000
+//                    usleep(useconds_t(0.5 * second))
+//
+//                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                } else {
+                    print("Vibrate!!!")
+//                    generator.impactOccurred()
+//                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                    
+//                    let generator = UINotificationFeedbackGenerator()
+//                    generator.notificationOccurred(.error)
+                }
+            }
         }
     }
 }
