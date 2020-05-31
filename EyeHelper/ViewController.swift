@@ -15,64 +15,47 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageOrientation: AVCaptureVideoOrientation?
-    var captureSession: AVCaptureSession?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var capturePhotoOutput: AVCapturePhotoOutput?
+    @IBOutlet weak var constraintImageHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintImageWidth: NSLayoutConstraint!
     
     var mTimer : Timer?
+    var textRecognizer: VisionTextRecognizer?
+    
+    // MARK: Camera
+    var isFrontCamera = false
+    lazy var captureSession = AVCaptureSession()
+    lazy var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+    lazy var sessionQueue = DispatchQueue(label: "SessionQueue")
+    lazy var outputQueue = DispatchQueue(label: "OutputQueue")
+
+    var cvImageBuffer: CVImageBuffer?
+    var viewControllerCiImage: CIImage?
+    var viewControllerUIImage: UIImage?
+    
+    var imageOrientation: UIImage.Orientation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let vision = Vision.vision()
-        let textRecognizer = vision.onDeviceTextRecognizer()
+        textRecognizer = vision.onDeviceTextRecognizer()
         
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-            fatalError("No video device found")
-        }
+        initCaptureSessionOutput()
+        initCaptureSessionInput()
         
-        self.imageOrientation = AVCaptureVideoOrientation.portrait
-        
-        do {
-            
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            
-            captureSession = AVCaptureSession()
-            
-            captureSession?.addInput(input)
-            
-            capturePhotoOutput = AVCapturePhotoOutput()
-            capturePhotoOutput?.isHighResolutionCaptureEnabled = true
-            
-            captureSession?.addOutput(capturePhotoOutput!)
-            captureSession?.sessionPreset = .high
-            
-            let captureMetadataOutput = AVCaptureMetadataOutput()
-            captureSession?.addOutput(captureMetadataOutput)
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-            
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            videoPreviewLayer?.frame = view.layer.bounds
-            cameraView.layer.addSublayer(videoPreviewLayer!)
-            
-            captureSession?.startRunning()
-            
-        } catch {
-            print(error)
-            return
-        }
+        let rotate: (Notification) -> Void = { _ in self.setRotation() }
+        NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: .main, using: rotate)
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.stopTimer()
+        stopSession()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        CaptureManager.shared.statSession()
-        CaptureManager.shared.delegate = self
-        
         self.startTimer()
+        startSession()
     }
     
     private func startTimer() {
@@ -80,41 +63,38 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             //timer 객체가 nil 이 아닌경우에는 invalid 상태에만 시작한다
             if !timer.isValid {
                 /** 1초마다 timerCallback함수를 호출하는 타이머 */
-                mTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+                mTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
             }
         } else {
-            mTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+            mTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+        }
+    }
+    
+    private func stopTimer() {
+        if let timer = mTimer {
+            timer.invalidate()
+            mTimer = nil
         }
     }
     
     @objc
     private func timerCallback() {
-        let uiImage = cameraView.createImage()
-        print("uiImage : \(uiImage)")
-        CaptureManager.shared.capture()
+        if let image = viewControllerUIImage {
+            self.imageView.image = image
+            self.requestFirebaseTextDetection(image: image)
+        }
     }
     
-}
-
-extension ViewController: CaptureManagerDelegate {
-    func processCapturedImage(image: UIImage) {
-        self.imageView.image = image
-    }
-}
-
-extension UIView {
-    
-    func createImage() -> UIImage? {
-        let rect: CGRect = self.frame
-        UIGraphicsBeginImageContext(rect.size)
-        
-        if let context = UIGraphicsGetCurrentContext() {
-            self.layer.render(in: context)
-            let img = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return img
-        } else {
-            return nil
+    private func requestFirebaseTextDetection(image: UIImage) {
+        let visionImage = VisionImage(image: image)
+        self.textRecognizer?.process(visionImage) { result, error in
+            guard error == nil, let result = result else {
+                print("error error error")
+                return
+            }
+            
+            // Recognized text
+            print("🗣 RESULT : \(result)")
         }
     }
     

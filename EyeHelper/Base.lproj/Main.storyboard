@@ -16,39 +16,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCo-OW-VpD" userLabel="CameraView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="SCo-OW-VpD" secondAttribute="height" multiplier="1:1" id="NV1-8r-w1M"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWm-lD-74e">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-vE-fr0">
-                                <rect key="frame" x="87" y="333" width="240" height="240"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTm-Og-9to">
+                                <rect key="frame" x="266" y="714" width="128" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="lUI-vE-fr0" secondAttribute="height" multiplier="1:1" id="7JL-E2-oXE"/>
-                                    <constraint firstAttribute="width" constant="240" id="IvJ-YD-WNv"/>
+                                    <constraint firstAttribute="height" constant="128" id="kAy-gI-Ucb"/>
+                                    <constraint firstAttribute="width" constant="128" id="tQ4-mP-aOo"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="SCo-OW-VpD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0qU-e0-PZM"/>
-                            <constraint firstItem="lUI-vE-fr0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FzZ-iE-gnS"/>
-                            <constraint firstItem="lUI-vE-fr0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JPq-xr-yf0"/>
-                            <constraint firstItem="SCo-OW-VpD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Sfx-qw-epb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SCo-OW-VpD" secondAttribute="trailing" id="Uth-tE-r2k"/>
+                            <constraint firstItem="wWm-lD-74e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JFj-dF-4K0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HTm-Og-9to" secondAttribute="trailing" constant="20" id="OjY-HN-0W0"/>
+                            <constraint firstAttribute="trailing" secondItem="wWm-lD-74e" secondAttribute="trailing" id="Vie-2I-OPv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HTm-Og-9to" secondAttribute="bottom" constant="20" id="W3s-4U-wtT"/>
+                            <constraint firstItem="wWm-lD-74e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZIA-3h-A2x"/>
+                            <constraint firstAttribute="bottom" secondItem="wWm-lD-74e" secondAttribute="bottom" id="znN-t4-Z5D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="cameraView" destination="SCo-OW-VpD" id="XDM-O9-wPK"/>
-                        <outlet property="imageView" destination="lUI-vE-fr0" id="ikI-Mp-SwU"/>
+                        <outlet property="cameraView" destination="wWm-lD-74e" id="d0e-rR-aDd"/>
+                        <outlet property="constraintImageHeight" destination="kAy-gI-Ucb" id="nWx-Gt-TsS"/>
+                        <outlet property="constraintImageWidth" destination="tQ4-mP-aOo" id="Bjl-za-pSg"/>
+                        <outlet property="imageView" destination="HTm-Og-9to" id="iZi-cH-EKs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="107" y="113"/>
         </scene>
     </scenes>
 </document>

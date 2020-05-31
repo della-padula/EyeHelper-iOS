@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B038E49E248122190029042D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B038E49D248122190029042D /* GoogleService-Info.plist */; };
-		B038E4A0248128A00029042D /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038E49F2481289F0029042D /* CaptureManager.swift */; };
+		B058444324838315007EB0F8 /* CameraModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058444224838315007EB0F8 /* CameraModule.swift */; };
 		B0E3C78324811A6400E284D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3C78224811A6400E284D0 /* AppDelegate.swift */; };
 		B0E3C78724811A6400E284D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3C78624811A6400E284D0 /* ViewController.swift */; };
 		B0E3C78A24811A6400E284D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0E3C78824811A6400E284D0 /* Main.storyboard */; };
@@ -22,7 +22,7 @@
 		2C13AC2B4D7BD02934CF3D86 /* Pods-EyeHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EyeHelper.release.xcconfig"; path = "Target Support Files/Pods-EyeHelper/Pods-EyeHelper.release.xcconfig"; sourceTree = "<group>"; };
 		70341AAB91609F9443C2BDF5 /* Pods_EyeHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EyeHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B038E49D248122190029042D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B038E49F2481289F0029042D /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
+		B058444224838315007EB0F8 /* CameraModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModule.swift; sourceTree = "<group>"; };
 		B0E3C77F24811A6400E284D0 /* EyeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E3C78224811A6400E284D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E3C78624811A6400E284D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				B0E3C79324811A6500E284D0 /* Info.plist */,
 				B038E49D248122190029042D /* GoogleService-Info.plist */,
 				B0E3C78B24811A6400E284D0 /* EyeHelper.xcdatamodeld */,
-				B038E49F2481289F0029042D /* CaptureManager.swift */,
+				B058444224838315007EB0F8 /* CameraModule.swift */,
 			);
 			path = EyeHelper;
 			sourceTree = "<group>";
@@ -231,9 +231,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B058444324838315007EB0F8 /* CameraModule.swift in Sources */,
 				B0E3C78724811A6400E284D0 /* ViewController.swift in Sources */,
 				B0E3C78D24811A6400E284D0 /* EyeHelper.xcdatamodeld in Sources */,
-				B038E4A0248128A00029042D /* CaptureManager.swift in Sources */,
 				B0E3C78324811A6400E284D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
