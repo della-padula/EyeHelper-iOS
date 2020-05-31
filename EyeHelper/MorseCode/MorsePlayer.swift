@@ -8,11 +8,18 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 import AVFoundation
 
 public class MorsePlayer {
     
+    private static let shortDuration = 0.1
+    private static let longDuration = 0.3
+    private static let breakDuration = 0.6
+    
     class func vibrate(morseText: String) {
+        // isVibrate : isLong
+        var dict: [(Bool, Bool)] = [(Bool, Bool)]()
         
         var encodedText = ""
         
@@ -22,36 +29,44 @@ public class MorsePlayer {
         
         print("encoded Text : \(encodedText)")
         
-        DispatchQueue.main.async {
-            var isLong: Bool = false
-            for (index, morse) in encodedText.enumerated() {
-                
-                if morse == Character("-") {
-                    isLong = true
-                } else if morse == Character(".") {
-                    isLong = false
-                }
-                
-//                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                
-                if isLong {
-                    vibrateAction(.heavy)
-                } else {
-                    vibrateAction(.light)
-                }
-                sleep(1)
-                
-                //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Double(index) * duration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
-                //                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                //                self.processVibration(isLong: isLong)
-                //            })
+        
+        var isLong: Bool = false
+        for (index, morse) in encodedText.enumerated() {
+            
+            if morse == Character("-") {
+                isLong = true
+                dict.append((true, true))
+            } else if morse == Character(".") {
+                isLong = false
+                dict.append((true, false))
+            } else {
+                dict.append((false, false))
             }
+        }
+        
+        DispatchQueue.main.async {
+            AudioServicesPlaySystemSound(4095)
         }
     }
     
-    private class func vibrateAction(_ style: UIImpactFeedbackGenerator.FeedbackStyle = .heavy) {
-        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: style)
-        impactFeedbackgenerator.prepare()
-        impactFeedbackgenerator.impactOccurred()
+    private class func vibrateAction(dict: [(Bool, Bool)]) {
+        var isVibrate = false
+        var isLong = false
+        var totalTime = 0.0
+        
+        var vibrateDuration = 0.0
+        
+        for item in dict {
+            isVibrate = item.0
+            isLong = item.1
+            vibrateDuration = isLong ? longDuration : shortDuration
+            
+            totalTime += breakDuration
+            totalTime += vibrateDuration
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + totalTime, execute: {
+                
+            })
+        }
     }
 }
