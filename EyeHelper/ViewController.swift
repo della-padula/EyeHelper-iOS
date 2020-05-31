@@ -48,6 +48,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let rotate: (Notification) -> Void = { _ in self.setRotation() }
         NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: .main, using: rotate)
         
+        self.playMorseCode()
+    }
+    
+    private func playMorseCode() {
+        MorsePlayer.vibrate(morseText: "HELLO")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

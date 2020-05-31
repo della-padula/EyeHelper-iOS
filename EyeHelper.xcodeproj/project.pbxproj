@@ -10,6 +10,8 @@
 		B038E49E248122190029042D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B038E49D248122190029042D /* GoogleService-Info.plist */; };
 		B058444324838315007EB0F8 /* CameraModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058444224838315007EB0F8 /* CameraModule.swift */; };
 		B058445B24839CC5007EB0F8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058445A24839CC5007EB0F8 /* UIImage+Extension.swift */; };
+		B05844662483A674007EB0F8 /* MorsePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05844652483A674007EB0F8 /* MorsePlayer.swift */; };
+		B05844682483A801007EB0F8 /* MorseSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05844672483A801007EB0F8 /* MorseSymbol.swift */; };
 		B0E3C78324811A6400E284D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3C78224811A6400E284D0 /* AppDelegate.swift */; };
 		B0E3C78724811A6400E284D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3C78624811A6400E284D0 /* ViewController.swift */; };
 		B0E3C78A24811A6400E284D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0E3C78824811A6400E284D0 /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 		B038E49D248122190029042D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B058444224838315007EB0F8 /* CameraModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModule.swift; sourceTree = "<group>"; };
 		B058445A24839CC5007EB0F8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		B05844652483A674007EB0F8 /* MorsePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorsePlayer.swift; sourceTree = "<group>"; };
+		B05844672483A801007EB0F8 /* MorseSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseSymbol.swift; sourceTree = "<group>"; };
 		B0E3C77F24811A6400E284D0 /* EyeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E3C78224811A6400E284D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E3C78624811A6400E284D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B058445C2483A24E007EB0F8 /* MorseCode */ = {
+			isa = PBXGroup;
+			children = (
+				B05844652483A674007EB0F8 /* MorsePlayer.swift */,
+				B05844672483A801007EB0F8 /* MorseSymbol.swift */,
+			);
+			path = MorseCode;
+			sourceTree = "<group>";
+		};
 		B0E3C77624811A6400E284D0 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,7 @@
 		B0E3C78124811A6400E284D0 /* EyeHelper */ = {
 			isa = PBXGroup;
 			children = (
+				B058445C2483A24E007EB0F8 /* MorseCode */,
 				B0E3C78224811A6400E284D0 /* AppDelegate.swift */,
 				B0E3C78624811A6400E284D0 /* ViewController.swift */,
 				B0E3C78824811A6400E284D0 /* Main.storyboard */,
@@ -235,7 +249,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B058444324838315007EB0F8 /* CameraModule.swift in Sources */,
+				B05844662483A674007EB0F8 /* MorsePlayer.swift in Sources */,
 				B0E3C78724811A6400E284D0 /* ViewController.swift in Sources */,
+				B05844682483A801007EB0F8 /* MorseSymbol.swift in Sources */,
 				B058445B24839CC5007EB0F8 /* UIImage+Extension.swift in Sources */,
 				B0E3C78D24811A6400E284D0 /* EyeHelper.xcdatamodeld in Sources */,
 				B0E3C78324811A6400E284D0 /* AppDelegate.swift in Sources */,
